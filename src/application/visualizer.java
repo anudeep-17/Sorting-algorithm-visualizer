@@ -32,7 +32,9 @@ public class visualizer
 	  BarChart<String, Number> barchart1;
 	  FlowPane objectorientator; 
 	  Random rand =  new Random();
-	  
+      
+	  //sorting method initializers
+	  bubblesort sort1;
 
 	//chart is made here ------
     public void chartmaker(BorderPane pane)
@@ -74,7 +76,7 @@ public class visualizer
 		objectorientator.setVgap(10);
 		
 	    Buttoncreate("RESET" , () -> resetvalues(pane));		
-		Buttoncreate("BUBBLESORT", () -> bubbleSort());
+		Buttoncreate("BUBBLESORT", () ->  sort1 = new bubblesort(bars));
 		
 		pane.setBottom(objectorientator);
 		
@@ -124,36 +126,6 @@ public class visualizer
     
     
     
-    /*
-     * ---------------------Bubble Sort algorithm----------------------------- 
-     */
     
-    private void bubbleSort() 
-    {
-        double[] array = bars.stream().mapToDouble(data -> data.getYValue().doubleValue()).toArray();
-
-        double temp;
-        for(int i = 0; i <array.length; i++)
-        {
-            for(int j = 1; j <array.length -i; j++)
-            {
-                if(array[j-1] > array[j])
-                {
-                    temp = array[j -1];
-                    array[j-1] = array[j];
-                    array[j] = temp;
-                   
-                }
-            }
-        }
-        
-        
-        for (int i = 0; i < array.length; i++) 
-        {
-        	  	
-            bars.get(i).setYValue(array[i]);
-          
-        }
-    }
 	
 }
