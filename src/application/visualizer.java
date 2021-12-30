@@ -67,6 +67,7 @@ public class visualizer
     
     
     
+    
   //object creator method that helps the in creating the buttons and text fields.
 	public void Objectcreator(BorderPane pane)
 	{
