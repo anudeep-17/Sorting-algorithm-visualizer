@@ -1,9 +1,12 @@
 package application;
 
 import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
@@ -13,9 +16,10 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 
-public class visualizer 
+public class visualizer extends bubblesort
 {
 
+	
 	visualizer(BorderPane pane)
 	{
 		chartmaker(pane);
@@ -32,9 +36,15 @@ public class visualizer
 	  BarChart<String, Number> barchart1;
 	  FlowPane objectorientator; 
 	  Random rand =  new Random();
+	  
+      ExecutorService serv = Executors.newCachedThreadPool(runnable -> 
+      {
+    	  Thread t = new Thread(runnable);
+    	  t.setDaemon(true);
+    	  return t;
+      });
       
-	  //sorting method initializers
-	  bubblesort sort1;
+	  
 
 	//chart is made here ------
     public void chartmaker(BorderPane pane)
@@ -44,6 +54,7 @@ public class visualizer
 		
 	    barchart1 = new BarChart<String, Number>(xAxis, yAxis);
 	   
+	    barchart1.setAnimated(false);
 
 	    barchart1.setLegendVisible(false);
         barchart1.getYAxis().setTickLabelsVisible(false);
@@ -67,7 +78,6 @@ public class visualizer
     
     
     
-    
   //object creator method that helps the in creating the buttons and text fields.
 	public void Objectcreator(BorderPane pane)
 	{
@@ -77,7 +87,7 @@ public class visualizer
 		objectorientator.setVgap(10);
 		
 	    Buttoncreate("RESET" , () -> resetvalues(pane));		
-		Buttoncreate("BUBBLESORT", () ->  sort1 = new bubblesort(bars));
+		bubblesortbuttoncreate(bubblesortTask(bars));
 		
 		pane.setBottom(objectorientator);
 		
@@ -92,7 +102,18 @@ public class visualizer
 		objectorientator.getChildren().add(create);
 	}
 	
-	
+	private void bubblesortbuttoncreate(Runnable method)
+	{
+		Button createButton = new Button("bubblesort");
+		createButton.setOnAction(e ->
+		{
+			Task<Void> animatedSort = (Task<Void>) method;
+			serv.submit(animatedSort);
+			
+		});
+		
+		objectorientator.getChildren().add(createButton);
+	}
 	
 	
 	
@@ -108,7 +129,7 @@ public class visualizer
 	//creating random values and filling array
 	public int randomnum_forgraphing()
 	{
-		return rand.nextInt(100);
+		return rand.nextInt(100)+1;
 	}
 	
 	
