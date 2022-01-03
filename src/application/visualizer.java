@@ -16,7 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 
-public class visualizer extends bubblesort
+public class visualizer 
 {
 
 	
@@ -37,13 +37,15 @@ public class visualizer extends bubblesort
 	  FlowPane objectorientator; 
 	  Random rand =  new Random();
 	  
-      ExecutorService serv = Executors.newCachedThreadPool(runnable -> 
+	
+	  ExecutorService serv = Executors.newCachedThreadPool(runnable -> 
       {
     	  Thread t = new Thread(runnable);
     	  t.setDaemon(true);
     	  return t;
       });
       
+      bubblesort sort1 = new bubblesort();
 	  
 
 	//chart is made here ------
@@ -87,7 +89,7 @@ public class visualizer extends bubblesort
 		objectorientator.setVgap(10);
 		
 	    Buttoncreate("RESET" , () -> resetvalues(pane));		
-		bubblesortbuttoncreate(bubblesortTask(bars));
+		bubblesortbuttoncreate();
 		
 		pane.setBottom(objectorientator);
 		
@@ -100,20 +102,26 @@ public class visualizer extends bubblesort
 		Button create = new Button(nameofbutton);
 		create.setOnAction(event -> method.run());
 		objectorientator.getChildren().add(create);
+		
 	}
 	
-	private void bubblesortbuttoncreate(Runnable method)
+	
+	private void bubblesortbuttoncreate()
 	{
+		  
 		Button createButton = new Button("bubblesort");
-		createButton.setOnAction(e ->
+		
+		createButton.setOnAction(event ->
 		{
-			Task<Void> animatedSort = (Task<Void>) method;
+			Task<Void> animatedSort = sort1.bubblesortTask(bars);
+			createButton.setDisable(true);
+			animatedSort.setOnSucceeded(e -> createButton.setDisable(false));
 			serv.submit(animatedSort);
-			
 		});
 		
 		objectorientator.getChildren().add(createButton);
 	}
+	
 	
 	
 	

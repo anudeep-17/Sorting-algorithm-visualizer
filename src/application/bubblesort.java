@@ -13,6 +13,10 @@ public class bubblesort extends animation
 {
 	
 	
+	public bubblesort()
+	{
+	  	
+	}
 	/*
      * ---------------------Bubble Sort algorithm----------------------------- 
      */
@@ -37,16 +41,12 @@ public class bubblesort extends animation
 					    		   Data<String, Number> second = bars.get(j+1);
 					    		   
 	      			     		  prestyleset(first, second);
-					    		   
-					    		   
-					    		   
+			    		   
 					    		   if(getval(first) > getval(second))
 					    		   {
 					    			   visualizeswap(first, second);
 					    		   }
-					    		   
-					    		  
-					    		    
+					    		   					    		    
 					    		 //once set in right place, change of color.
 					    		   poststyleset(first, second);		
 
