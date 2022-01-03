@@ -1,9 +1,6 @@
 package application;
 
-import java.util.concurrent.CountDownLatch;
 
-import javafx.animation.Animation;
-import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.scene.chart.XYChart.Data;

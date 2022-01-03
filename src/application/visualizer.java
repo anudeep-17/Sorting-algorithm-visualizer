@@ -46,7 +46,7 @@ public class visualizer
       });
       
       bubblesort sort1 = new bubblesort();
-	  
+	  selectionsort sort2 = new selectionsort();
 
 	//chart is made here ------
     public void chartmaker(BorderPane pane)
@@ -90,6 +90,7 @@ public class visualizer
 		
 	    Buttoncreate("RESET" , () -> resetvalues(pane));		
 		bubblesortbuttoncreate();
+		selectionsortbuttoncreate();
 		
 		pane.setBottom(objectorientator);
 		
@@ -109,7 +110,7 @@ public class visualizer
 	private void bubblesortbuttoncreate()
 	{
 		  
-		Button createButton = new Button("bubblesort");
+		Button createButton = new Button("bubble sort");
 		
 		createButton.setOnAction(event ->
 		{
@@ -122,6 +123,21 @@ public class visualizer
 		objectorientator.getChildren().add(createButton);
 	}
 	
+	private void selectionsortbuttoncreate()
+	{
+		  
+		Button createButton = new Button("selection sort");
+		
+		createButton.setOnAction(event ->
+		{
+			Task<Void> animatedSort = sort2.selectionsortTask(bars);
+			createButton.setDisable(true);
+			animatedSort.setOnSucceeded(e -> createButton.setDisable(false));
+			serv.submit(animatedSort);
+		});
+		
+		objectorientator.getChildren().add(createButton);
+	}
 	
 	
 	
