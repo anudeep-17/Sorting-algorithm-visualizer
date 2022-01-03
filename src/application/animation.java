@@ -1,8 +1,11 @@
 package application;
 
+import java.util.concurrent.CountDownLatch;
+
 import javafx.animation.Animation;
 import javafx.animation.ParallelTransition;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.XYChart.Data;
 import javafx.scene.transform.Translate;
@@ -12,6 +15,7 @@ public class animation<T>
 {
 	public <T> Animation swap(Data<?, T> first, Data<?,T>second)
 	{
+		
 		
 		double firstx = first.getNode().getParent().localToScene(first.getNode().getBoundsInParent()).getMinX();
 		double secondx = second.getNode().getParent().localToScene(second.getNode().getBoundsInParent()).getMinX();
@@ -45,6 +49,46 @@ public class animation<T>
 		return translate;
 		
 		
+	}
+	
+	public void visualizeswap(Data<?,T> first, Data<?,T> second) throws Exception
+	{
+		CountDownLatch latch = new CountDownLatch(1);
+		  
+//		   Platform.runLater(() ->
+//		   {
+			Animation swap = swap(first, second);
+			swap.setOnFinished(e -> latch.countDown());
+			swap.play();
+		   
+//		   });
+		   latch.await();
+	}
+	
+	
+	
+	
+	public void prestyleset(Data<?,T> first, Data<?,T> second) throws Exception
+	{
+//		 Platform.runLater(() ->
+//		   {
+			   first.getNode().setStyle("-fx-background-color: black ;");
+			   second.getNode().setStyle("-fx-background-color: black ;");
+			   
+//		   });
+			   
+			   Thread.sleep(50);
+	}
+	
+	public void poststyleset(Data<?,T> first, Data<?,T> second) throws Exception
+	{
+		 Thread.sleep(50);
+//		  Platform.runLater(() -> {
+			   
+              first.getNode().setStyle(" ");
+              second.getNode().setStyle("-fx-background-color: green;");
+              
+//          });
 	}
 
 

@@ -1,10 +1,8 @@
 package application;
 
-import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 import javafx.animation.Animation;
-import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -13,13 +11,6 @@ import javafx.util.Duration;
 
 public class bubblesort extends animation
 {
-	
-	
-	
-
-	
-	
-	
 	
 	
 	/*
@@ -45,54 +36,31 @@ public class bubblesort extends animation
 					    		   Data<String, Number> first = bars.get(j);
 					    		   Data<String, Number> second = bars.get(j+1);
 					    		   
-	      			    		   Platform.runLater(() ->
-					    		   {
-					    			   first.getNode().setStyle("-fx-background-color: black ;");
-					    			   second.getNode().setStyle("-fx-background-color: black ;");
-					    			   
-					    		   });
+	      			     		  prestyleset(first, second);
 					    		   
-					    		   Thread.sleep(50);
+					    		   
 					    		   
 					    		   if(getval(first) > getval(second))
 					    		   {
-					    			   CountDownLatch latch = new CountDownLatch(1);
-					    			   Platform.runLater(() ->
-					    			   {
-					    				Animation swap = swap(first, second);
-					    				swap.setOnFinished(e -> latch.countDown());
-					    				swap.play();
-					    			   
-					    			   });
-					    			   latch.await();
+					    			   visualizeswap(first, second);
 					    		   }
 					    		   
-					    		   Thread.sleep(50);
-					    		   
-					    		   int forcolorchange = j;
-					    		   int indexoflastrun = bars.size()-i-2;
-					    		   
-					    		   Platform.runLater(() -> {
-					    			   
-					                   first.getNode().setStyle(" ");
-					                   second.getNode().setStyle("-fx-background-color: green;");
-					                   if(forcolorchange == indexoflastrun)
-							    	   {
-							    		   first.getNode().setStyle("-fx-background-color: green;");
-							    	   }
-					               });
+					    		  
+					    		    
+					    		 //once set in right place, change of color.
+					    		   poststyleset(first, second);		
+
 					    		   
 					    	   }
-					    	  
-					    	
 					    	   
+                                //to set the first bar in sorted position.
+					    	   bars.get(0).getNode().setStyle("-fx-background-color: green;");
 					       }
 						 
 						return null;
 					}
 			
 				};
-	 
 	}
 
     private double getval(Data<String, Number> given)
