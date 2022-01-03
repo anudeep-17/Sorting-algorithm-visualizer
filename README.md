@@ -20,5 +20,5 @@ visualing a sorting algorithm using <i><Strong>Java</Strong></i> and <i><Strong>
 <br/>
 <br/>
 <br/>
-<img src="https://img.icons8.com/color/48/000000/java-coffee-cup-logo--v1.png" width="40px" align="right"/>
-<img src="https://img.icons8.com/officel/40/000000/java-eclipse.png" width="20px" align="right"/>
+<img src="https://img.icons8.com/color/48/000000/java-coffee-cup-logo--v1.png" width="45px" align="right"/>
+<img src="https://img.icons8.com/officel/31/000000/java-eclipse.png" align="right"/>
