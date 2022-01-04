@@ -19,7 +19,7 @@ public class selectionsort extends animation
 	
 	
 	/*
-     * ---------------------Bubble Sort algorithm----------------------------- 
+     * --------------------- selection Sort algorithm ----------------------------- 
      */
 	/**
      * Bubble Sort algorithm

@@ -28,8 +28,6 @@ public class visualizer
 
 	
 	
-	
-	
 	//..........................code starts here ................................................
 	
 	 ObservableList<Data<String, Number>> bars;
@@ -45,9 +43,13 @@ public class visualizer
     	  return t;
       });
       
+	  
+	  //sorting algorithms 
+	  
       bubblesort sort1 = new bubblesort();
 	  selectionsort sort2 = new selectionsort();
 
+	  
 	//chart is made here ------
     public void chartmaker(BorderPane pane)
 	{
@@ -96,9 +98,11 @@ public class visualizer
 		
 	}
 	
+	
 	//button creator method takes name of button and runnable method.
 	private void Buttoncreate(String nameofbutton, Runnable method)
 	{
+	
 		// TODO Auto-generated method stub
 		Button create = new Button(nameofbutton);
 		create.setOnAction(event -> method.run());
@@ -107,6 +111,7 @@ public class visualizer
 	}
 	
 	
+	//bubble sort
 	private void bubblesortbuttoncreate()
 	{
 		  
@@ -123,6 +128,8 @@ public class visualizer
 		objectorientator.getChildren().add(createButton);
 	}
 	
+	
+	//selection sort
 	private void selectionsortbuttoncreate()
 	{
 		  

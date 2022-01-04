@@ -5,10 +5,7 @@ import java.util.concurrent.CountDownLatch;
 import javafx.animation.Animation;
 import javafx.animation.ParallelTransition;
 import javafx.animation.TranslateTransition;
-import javafx.application.Platform;
-import javafx.collections.ObservableList;
 import javafx.scene.chart.XYChart.Data;
-import javafx.scene.transform.Translate;
 import javafx.util.Duration;
 
 public class animation<T>
@@ -55,13 +52,10 @@ public class animation<T>
 	{
 		CountDownLatch latch = new CountDownLatch(1);
 		  
-//		   Platform.runLater(() ->
-//		   {
+
 			Animation swap = swap(first, second);
 			swap.setOnFinished(e -> latch.countDown());
 			swap.play();
-		   
-//		   });
 		   latch.await();
 	}
 	
@@ -70,25 +64,21 @@ public class animation<T>
 	
 	public void prestyleset(Data<?,T> first, Data<?,T> second) throws Exception
 	{
-//		 Platform.runLater(() ->
-//		   {
+
 			   first.getNode().setStyle("-fx-background-color: black ;");
 			   second.getNode().setStyle("-fx-background-color: black ;");
-			   
-//		   });
-			   
 			   Thread.sleep(50);
 	}
 	
+	
 	public void poststyleset(Data<?,T> first, Data<?,T> second) throws Exception
 	{
-		 Thread.sleep(50);
-//		  Platform.runLater(() -> {
-			   
+		
+		      Thread.sleep(50);
               first.getNode().setStyle(" ");
               second.getNode().setStyle("-fx-background-color: green;");
+ 
               
-//          });
 	}
 
 
