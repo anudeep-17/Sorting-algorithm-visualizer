@@ -48,7 +48,7 @@ public class visualizer
 	  
       bubblesort sort1 = new bubblesort();
 	  selectionsort sort2 = new selectionsort();
-
+      insertionsort sort3 = new insertionsort();
 	  
 	//chart is made here ------
     public void chartmaker(BorderPane pane)
@@ -93,6 +93,7 @@ public class visualizer
 	    Buttoncreate("RESET" , () -> resetvalues(pane));		
 		bubblesortbuttoncreate();
 		selectionsortbuttoncreate();
+		insertionsortbuttoncreate();
 		
 		pane.setBottom(objectorientator);
 		
@@ -147,6 +148,23 @@ public class visualizer
 	}
 	
 	
+	
+	//insertion sort
+		private void insertionsortbuttoncreate()
+		{
+			  
+			Button createButton = new Button("insertion sort");
+			
+			createButton.setOnAction(event ->
+			{
+				Task<Void> animatedSort = sort3.insertionsortTask(bars);
+				createButton.setDisable(true);
+				animatedSort.setOnSucceeded(e -> createButton.setDisable(false));
+				serv.submit(animatedSort);
+			});
+			
+			objectorientator.getChildren().add(createButton);
+		}
 	
 	
 	

@@ -8,12 +8,9 @@ public class selectionsort extends animation
 {
 	
 
-	
-	
-
 	public selectionsort()
 	{
-	  	
+		//empty constructor.
 	}
 	
 	
@@ -22,7 +19,7 @@ public class selectionsort extends animation
      * --------------------- selection Sort algorithm ----------------------------- 
      */
 	/**
-     * Bubble Sort algorithm
+     * selection Sort algorithm
 	 * @throws InterruptedException 
      */
 	protected Task<Void> selectionsortTask(ObservableList<Data<String, Number>> bars)

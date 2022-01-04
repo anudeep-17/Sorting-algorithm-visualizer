@@ -81,6 +81,11 @@ public class animation<T>
               
 	}
 
-
+	public void poststyleset_forinsertionsort(Data<?,T> first, Data<?,T> second) throws Exception
+	{
+		Thread.sleep(50);
+        first.getNode().setStyle("-fx-background-color: green;");
+        second.getNode().setStyle("-fx-background-color: green;");
+	}
 	
 }

@@ -12,8 +12,11 @@ public class bubblesort extends animation
 	
 	public bubblesort()
 	{
-	  	
+		//empty constructor.
 	}
+	
+	
+	
 	/*
      * ---------------------Bubble Sort algorithm----------------------------- 
      */
@@ -21,6 +24,7 @@ public class bubblesort extends animation
      * Bubble Sort algorithm
 	 * @throws InterruptedException 
      */
+	
 	protected Task<Void> bubblesortTask(ObservableList<Data<String, Number>> bars)
 	{   
 		return new Task<Void>()
