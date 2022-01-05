@@ -20,6 +20,7 @@ public class bubblesort extends animation
 	/*
      * ---------------------Bubble Sort algorithm----------------------------- 
      */
+	
 	/**
      * Bubble Sort algorithm
 	 * @throws InterruptedException 

@@ -5,6 +5,7 @@ import java.util.concurrent.CountDownLatch;
 import javafx.animation.Animation;
 import javafx.animation.ParallelTransition;
 import javafx.animation.TranslateTransition;
+import javafx.collections.ObservableList;
 import javafx.scene.chart.XYChart.Data;
 import javafx.util.Duration;
 
@@ -81,11 +82,31 @@ public class animation<T>
               
 	}
 
-	public void poststyleset_forinsertionsort(Data<?,T> first, Data<?,T> second) throws Exception
+	public void poststyleset_forinsertionsort( Data<?,T> first, Data<?,T> second) throws Exception
 	{
 		Thread.sleep(50);
         first.getNode().setStyle("-fx-background-color: green;");
         second.getNode().setStyle("-fx-background-color: green;");
+	}
+	
+	public void poststyleset_forshellsort(ObservableList<Data<?,T>> bars, Data<?,T> first,Data<?,T> second, int index , int total) throws Exception
+	{
+		Thread.sleep(50);
+        first.getNode().setStyle("-fx-background-color: green;");
+        second.getNode().setStyle("-fx-background-color: green;");
+        
+        if(index == total)
+        {
+        	setallsamecolor(bars);
+        }
+	}
+	
+	public void setallsamecolor(ObservableList<Data<?,T>> bars)
+	{
+		for(int i = 0 ; i <bars.size(); i++)
+		{
+			bars.get(i).getNode().setStyle("-fx-background-color: green;");
+		}
 	}
 	
 }
