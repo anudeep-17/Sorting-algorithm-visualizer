@@ -109,4 +109,26 @@ public class animation<T>
 		}
 	}
 	
+	
+	public void setleftsidecolor(ObservableList<Data<?,T>> bars, int start, int size) throws Exception
+	{
+		Thread.sleep(10);
+		
+		for(int i = start ; i <size; i++)
+		{
+			bars.get(i).getNode().setStyle("-fx-background-color: cyan;");
+		}
+	}
+	
+
+	public void setrightsidecolor(ObservableList<Data<?,T>> bars, int start, int size) throws Exception
+	{
+		Thread.sleep(10);
+		
+		for(int i = start ; i <size; i++)
+		{
+			bars.get(i).getNode().setStyle("-fx-background-color: blue;");
+		}
+	}
+	
 }
