@@ -50,7 +50,7 @@ public class visualizer
 	  selectionsort sort2 = new selectionsort();
       insertionsort sort3 = new insertionsort();
       shellsort sort4 = new shellsort();
-	  
+	  mergesort sort5 = new mergesort();
 	//chart is made here ------
     public void chartmaker(BorderPane pane)
 	{
@@ -96,7 +96,7 @@ public class visualizer
 		selectionsortbuttoncreate();
 		insertionsortbuttoncreate();
 		shellsortbuttoncreate();
-		
+		mergesortbuttoncreate();
 		pane.setBottom(objectorientator);
 		
 	}
@@ -169,21 +169,37 @@ public class visualizer
 		}
 	
 		//shell sort
-				private void shellsortbuttoncreate()
-				{
-					  
-					Button createButton = new Button("shell sort");
-					
-					createButton.setOnAction(event ->
-					{
-						Task<Void> animatedSort = sort4.shellsortTask(bars);
-						createButton.setDisable(true);
-						animatedSort.setOnSucceeded(e -> createButton.setDisable(false));
-						serv.submit(animatedSort);
-					});
-					
-					objectorientator.getChildren().add(createButton);
-				}
+		private void shellsortbuttoncreate()
+		{
+			  
+			Button createButton = new Button("shell sort");
+			
+			createButton.setOnAction(event ->
+			{
+				Task<Void> animatedSort = sort4.shellsortTask(bars);
+				createButton.setDisable(true);
+				animatedSort.setOnSucceeded(e -> createButton.setDisable(false));
+				serv.submit(animatedSort);
+			});
+			
+			objectorientator.getChildren().add(createButton);
+		}
+		
+		private void mergesortbuttoncreate()
+		{
+			  
+			Button createButton = new Button("merge sort");
+			
+			createButton.setOnAction(event ->
+			{
+				Task<Void> animatedSort = sort5.mergesortTask(bars);
+				createButton.setDisable(true);
+				animatedSort.setOnSucceeded(e -> createButton.setDisable(false));
+				serv.submit(animatedSort);
+			});
+			
+			objectorientator.getChildren().add(createButton);
+		}
 	
 	
 	//reseting the graph by running with new values.
