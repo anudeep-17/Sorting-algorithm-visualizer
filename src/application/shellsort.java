@@ -23,6 +23,11 @@ public class shellsort extends animation
 	 * @throws InterruptedException 
      */
 	
+	
+	//color scheme yet to change to better visualization
+	
+	
+	
 	protected Task<Void> shellsortTask(ObservableList<Data<String, Number>> bars)
 	{   
 		return new Task<Void>()
