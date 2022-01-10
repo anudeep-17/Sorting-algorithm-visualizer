@@ -51,6 +51,8 @@ public class visualizer
       insertionsort sort3 = new insertionsort();
       shellsort sort4 = new shellsort();
 	  mergesort sort5 = new mergesort();
+	  quicksort sort6 = new quicksort();
+	  
 	//chart is made here ------
     public void chartmaker(BorderPane pane)
 	{
@@ -97,6 +99,7 @@ public class visualizer
 		insertionsortbuttoncreate();
 		shellsortbuttoncreate();
 		mergesortbuttoncreate();
+		quicksortbuttoncreate();
 		pane.setBottom(objectorientator);
 		
 	}
@@ -201,6 +204,21 @@ public class visualizer
 			objectorientator.getChildren().add(createButton);
 		}
 	
+		private void quicksortbuttoncreate()
+		{
+			  
+			Button createButton = new Button("quick sort");
+			
+			createButton.setOnAction(event ->
+			{
+				Task<Void> animatedSort = sort6.quicksortTask(bars);
+				createButton.setDisable(true);
+				animatedSort.setOnSucceeded(e -> createButton.setDisable(false));
+				serv.submit(animatedSort);
+			});
+			
+			objectorientator.getChildren().add(createButton);
+		}
 	
 	//reseting the graph by running with new values.
 	public void resetvalues(BorderPane pane)

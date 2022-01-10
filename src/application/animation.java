@@ -101,6 +101,18 @@ public class animation<T>
         }
 	}
 	
+	public void poststyleset_quicksort(ObservableList<Data<?,T>> bars, Data<?,T> first,Data<?,T> second, int index , int total) throws Exception
+	{
+		Thread.sleep(50);
+        first.getNode().setStyle(" ");
+        second.getNode().setStyle("-fx-background-color: green;");
+        
+        if(index == total && total == bars.size())
+        {
+        	setallsamecolor(bars);
+        }
+	}
+	
 	public void setallsamecolor(ObservableList<Data<?,T>> bars)
 	{
 		for(int i = 0 ; i <bars.size(); i++)
