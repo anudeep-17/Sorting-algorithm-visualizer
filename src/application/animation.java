@@ -66,8 +66,8 @@ public class animation<T>
 	public void prestyleset(Data<?,T> first, Data<?,T> second) throws Exception
 	{
 
-			   first.getNode().setStyle("-fx-background-color: black ;");
-			   second.getNode().setStyle("-fx-background-color: black ;");
+			   first.getNode().setStyle("-fx-background-color:  grey ;");
+			   second.getNode().setStyle("-fx-background-color: grey ;");
 			   Thread.sleep(50);
 	}
 	

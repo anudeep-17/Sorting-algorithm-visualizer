@@ -74,7 +74,7 @@ public class visualizer
         barchart1.setHorizontalGridLinesVisible(false);
         barchart1.setVerticalGridLinesVisible(false);
         
-       
+        barchart1.lookup(".chart-plot-background").setStyle("-fx-background-color: transparent;");
        bars = FXCollections.observableArrayList(); //instantiating the bars 
        fillindata(); // filling data into the bar graph and setting the chart for user.
        barchart1.getData().add(new Series<>(bars)); //adding them to the barchart
