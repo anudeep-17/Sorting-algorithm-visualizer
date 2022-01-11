@@ -249,7 +249,7 @@ public class visualizer
 	//creating random values and filling array
 	public int randomnum_forgraphing()
 	{
-		return rand.nextInt(10)+1;
+		return rand.nextInt(100)+1;
 	}
 	
 	

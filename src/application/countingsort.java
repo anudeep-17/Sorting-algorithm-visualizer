@@ -37,7 +37,7 @@ public class countingsort extends animation
 						// TODO Auto-generated method stub
 						
 						
-						countingsorter(bars, 0, 11);
+						countingsorter(bars, 0, 101);
 						
 						return null;
 					}
@@ -50,7 +50,7 @@ public class countingsort extends animation
 	private void countingsorter(ObservableList<Data<String, Number>> bars, int min, int max) throws Exception 
 	{
 		
-		int[] count = new int[12];
+		int[] count = new int[102];
 		
 		for(int i = 0; i < bars.size(); i++)
 		{
@@ -66,31 +66,35 @@ public class countingsort extends animation
 		
 		
 		int index = 0 ;
+		int colorsetter = 1;
 		
 		 for(int i = 0 ; i <= max ; i++)
 		{
 			
 			while(count[i] > 0)
 			{
+				Data<String,Number> first = null;
+				Data<String, Number> second = null;
 				for(int k = 0; k < bars.size(); k++)
 				{
 					if(getval(bars.get(k)) == i)
 					{
-						Data<String,Number> first = bars.get(index);
-						Data<String, Number> second = bars.get(k);
+						first = bars.get(index);
+						second = bars.get(k);
 						
 						prestyleset(first,second);
 						visualizeswap(bars.get(index), bars.get(k));
-						poststyleset_forcountingsort(bars, first,second, i);
-						
+						poststyleset_forcountingsort(bars,first,second,colorsetter++);
 						index++;
 						count[i]--;
 					}
+					
 				}
+				
 
 			}
 
-		}
+		 }
 		
 	}
 	
