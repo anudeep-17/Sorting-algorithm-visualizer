@@ -53,6 +53,8 @@ public class visualizer
 	  mergesort sort5 = new mergesort();
 	  quicksort sort6 = new quicksort();
 	  countingsort sort7 = new countingsort();
+	  radixsort sort8 = new radixsort();
+	  
 	  
 	//chart is made here ------
     public void chartmaker(BorderPane pane)
@@ -102,6 +104,7 @@ public class visualizer
 		mergesortbuttoncreate();
 		quicksortbuttoncreate();
 		countingsortbuttoncreate();
+		radixsortbuttoncreate();
 		pane.setBottom(objectorientator);
 		
 	}
@@ -238,6 +241,23 @@ public class visualizer
 			
 			objectorientator.getChildren().add(createButton);
 		}
+		
+		private void radixsortbuttoncreate()
+		{
+			  
+			Button createButton = new Button("radix sort");
+			
+			createButton.setOnAction(event ->
+			{
+				Task<Void> animatedSort = sort8.radixsortTask(bars);
+				createButton.setDisable(true);
+				animatedSort.setOnSucceeded(e -> createButton.setDisable(false));
+				serv.submit(animatedSort);
+			});
+			
+			objectorientator.getChildren().add(createButton);
+		}
+
 	
 	//reseting the graph by running with new values.
 	public void resetvalues(BorderPane pane)

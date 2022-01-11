@@ -127,6 +127,14 @@ public class animation<T>
               }
 	}
 	
+	public void poststyleset_forradixsort( Data<?,T> first, Data<?,T> second) throws Exception
+	{
+		
+		      Thread.sleep(50);
+              first.getNode().setStyle(" ");
+              second.getNode().setStyle(" ");
+ 
+	}
 	
 	public void setallsamecolor(ObservableList<Data<?,T>> bars)
 	{
