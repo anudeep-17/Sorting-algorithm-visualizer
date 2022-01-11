@@ -113,6 +113,22 @@ public class animation<T>
         }
 	}
 	
+	
+	public void poststyleset_forcountingsort(ObservableList<Data<?,T>> bars, Data<?,T> first, Data<?,T> second, int max) throws Exception
+	{
+		
+		      Thread.sleep(50);
+              first.getNode().setStyle("-fx-background-color: green;");
+              second.getNode().setStyle(" ");
+ 
+              if(max == bars.size())
+              {
+            	  setallsamecolor(bars);
+              }
+              
+	}
+	
+	
 	public void setallsamecolor(ObservableList<Data<?,T>> bars)
 	{
 		for(int i = 0 ; i <bars.size(); i++)

@@ -52,6 +52,7 @@ public class visualizer
       shellsort sort4 = new shellsort();
 	  mergesort sort5 = new mergesort();
 	  quicksort sort6 = new quicksort();
+	  countingsort sort7 = new countingsort();
 	  
 	//chart is made here ------
     public void chartmaker(BorderPane pane)
@@ -100,6 +101,7 @@ public class visualizer
 		shellsortbuttoncreate();
 		mergesortbuttoncreate();
 		quicksortbuttoncreate();
+		countingsortbuttoncreate();
 		pane.setBottom(objectorientator);
 		
 	}
@@ -219,6 +221,23 @@ public class visualizer
 			
 			objectorientator.getChildren().add(createButton);
 		}
+		
+
+		private void countingsortbuttoncreate()
+		{
+			  
+			Button createButton = new Button("counting sort");
+			
+			createButton.setOnAction(event ->
+			{
+				Task<Void> animatedSort = sort7.countingsortTask(bars);
+				createButton.setDisable(true);
+				animatedSort.setOnSucceeded(e -> createButton.setDisable(false));
+				serv.submit(animatedSort);
+			});
+			
+			objectorientator.getChildren().add(createButton);
+		}
 	
 	//reseting the graph by running with new values.
 	public void resetvalues(BorderPane pane)
@@ -230,7 +249,7 @@ public class visualizer
 	//creating random values and filling array
 	public int randomnum_forgraphing()
 	{
-		return rand.nextInt(100)+1;
+		return rand.nextInt(10)+1;
 	}
 	
 	
