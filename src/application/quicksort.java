@@ -15,10 +15,10 @@ public class quicksort extends animation
 	
 	
 	/*
-     * --------------------- selection Sort algorithm ----------------------------- 
+     * --------------------- quick Sort algorithm ----------------------------- 
      */
 	/**
-     * selection Sort algorithm
+     * quick Sort algorithm
 	 * @throws InterruptedException 
      */
 	protected Task<Void> quicksortTask(ObservableList<Data<String, Number>> bars)
